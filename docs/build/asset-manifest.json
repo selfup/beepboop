@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/beepboop/static/css/main.c363bd2f.css",
+    "main.js": "/beepboop/static/js/main.789fdc69.js",
+    "index.html": "/beepboop/index.html",
+    "main.c363bd2f.css.map": "/beepboop/static/css/main.c363bd2f.css.map",
+    "main.789fdc69.js.map": "/beepboop/static/js/main.789fdc69.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c363bd2f.css",
+    "static/js/main.789fdc69.js"
+  ]
+}
