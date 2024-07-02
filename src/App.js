@@ -13,6 +13,9 @@ function Notes({stateChanger, scaleKey, scaleName, scaleNameIndex, keyNameIndex}
   const tenorSax = customScale.transposeForTenorSax().map(note => note.name).join(', ');
   const lowEString = customScale.toFretsOnString('E').join(', ');
   const LowCString = customScale.toFretsOnString('C').join(', ');
+  const lowBString = customScale.toFretsOnString('B').join(', ');
+  const lowAString = customScale.toFretsOnString('A').join(', ');
+  const lowFSharpString = customScale.toFretsOnString('F#').join(', ');
 
   return (
     <div>
@@ -60,6 +63,18 @@ function Notes({stateChanger, scaleKey, scaleName, scaleNameIndex, keyNameIndex}
 
       <p>Low C String:
         <b> {LowCString}</b>
+      </p>
+
+      <p>Low B String:
+        <b> {lowBString}</b>
+      </p>
+
+      <p>Low A String:
+        <b> {lowAString}</b>
+      </p>
+
+      <p>Low F# String:
+        <b> {lowFSharpString}</b>
       </p>
     </div>    
   )
