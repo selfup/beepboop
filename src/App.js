@@ -16,10 +16,12 @@ function Notes({stateChanger, scaleKey, scaleName, scaleNameIndex, keyNameIndex}
 
   return (
     <div>
+      
       Key: <b>{scaleKey}</b>
-      <div>
+      <div className='section'>
         {keyNames.map((name, idx) =>
           <button
+            className='key-button'
             key={idx}
             onClick={() => stateChanger({keyNameIndex: idx, scaleNameIndex})}
           >
@@ -27,11 +29,9 @@ function Notes({stateChanger, scaleKey, scaleName, scaleNameIndex, keyNameIndex}
           </button>
         )}
       </div>
-      <div>
-        <p></p>
-      </div>
+
       Scale: <b>{scaleName}</b>
-      <div>
+      <div className='section'>
         {scaleNames.map((name, idx) =>
           <button
             key={idx}
@@ -46,11 +46,11 @@ function Notes({stateChanger, scaleKey, scaleName, scaleNameIndex, keyNameIndex}
         <b> {concertNotes}</b>
       </p>
 
-      <p>Alto Sax:
+      <p>Alto Sax (Eb):
         <b> {altoSax}</b>
       </p>
 
-      <p>Tenor Sax:
+      <p>Tenor Sax (Bb):
         <b> {tenorSax}</b>
       </p>
       
