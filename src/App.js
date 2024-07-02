@@ -21,8 +21,7 @@ function Notes({stateChanger, scaleKey, scaleName, scaleNameIndex, keyNameIndex}
 
   return (
     <div>
-      
-      Key: <b>{scaleKey}</b>
+      <p>Key: <b>{scaleKey}</b></p>
       <div className='section'>
         {keyNames.map((name, idx) =>
           <button
@@ -35,7 +34,7 @@ function Notes({stateChanger, scaleKey, scaleName, scaleNameIndex, keyNameIndex}
         )}
       </div>
 
-      Scale: <b>{scaleName}</b>
+      <p>Scale: <b>{scaleName}</b></p>
       <div className='section'>
         {scaleNames.map((name, idx) =>
           <button
@@ -46,25 +45,25 @@ function Notes({stateChanger, scaleKey, scaleName, scaleNameIndex, keyNameIndex}
           </button>
         )}
       </div>
+      <div className='notes-section'>
+        <p className='notes'>Concert Notes:
+          <b> {concertNotes}</b>
+        </p>
 
-      <p>Concert Notes:
-        <b> {concertNotes}</b>
-      </p>
+        <p className='notes'>Alto Sax (Eb):
+          <b> {altoSax}</b>
+        </p>
 
-      <p>Alto Sax (Eb):
-        <b> {altoSax}</b>
-      </p>
+        <p className='notes'>Tenor Sax (Bb):
+          <b> {tenorSax}</b>
+        </p>
+        
+        <p className='notes'>Low E String:
+          <b> {lowEString} </b>
+        </p>
+      </div>
 
-      <p>Tenor Sax (Bb):
-        <b> {tenorSax}</b>
-      </p>
-      
-      <p>Low E String:
-        <b> {lowEString} </b>
-      </p>
-
-      <br></br>
-      Custom String Note: <b>{customStringNote}</b>
+      <p>Custom String Note: <b>{customStringNote}</b></p>
       <div className='section'>
         {keyNames.map((name, idx) =>
           <button
@@ -76,7 +75,12 @@ function Notes({stateChanger, scaleKey, scaleName, scaleNameIndex, keyNameIndex}
           </button>
         )}
       </div>
-      <p>Custom String <b>{customStringNote}</b>: {customScale.toFretsOnString(customStringNote).join(', ')}</p>
+      <div className='notes-section'>
+        <p className='notes'>
+          Custom String <b>{customStringNote}</b>: {customScale.toFretsOnString(customStringNote).join(', ')}
+        </p>
+      </div>
+      
     </div>    
   )
 }
@@ -102,7 +106,6 @@ function App() {
             scaleNameIndex={scaleNameIndex}
             keyNameIndex={keyNameIndex}
           />
-        
       </header>
     </div>
   );
