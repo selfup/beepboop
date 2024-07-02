@@ -61,19 +61,19 @@ function Notes({stateChanger, scaleKey, scaleName, scaleNameIndex, keyNameIndex}
         <b> {lowEString} </b>
       </p>
 
-      <p>Low C String:
+      <p>Alt Tuning - Low C:
         <b> {LowCString}</b>
       </p>
 
-      <p>Low B String:
+      <p>Alt Tuning - Low B:
         <b> {lowBString}</b>
       </p>
 
-      <p>Low A String:
+      <p>Alt Tuning - Low A:
         <b> {lowAString}</b>
       </p>
 
-      <p>Low F# String:
+      <p>Alt Tuning - Low F#:
         <b> {lowFSharpString}</b>
       </p>
     </div>    
