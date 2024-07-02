@@ -23,3 +23,19 @@
   color: #61dafb;
 }
 
+button {
+  margin: 2px;
+  border-color: plum;
+  border-radius: 1em;
+  /* width: 125px; */
+  height: 30px;
+}
+
+.key-button {
+  width: 60px;
+}
+
+.section {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

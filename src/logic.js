@@ -67,7 +67,6 @@ export class ScalePattern {
             new ScalePattern('Neapolitan Minor', [1, 2, 2, 2, 1, 3, 1]),
             new ScalePattern('Gypsy', [1, 3, 1, 2, 1, 3, 1]),
             new ScalePattern('Spanish Gypsy', [1, 3, 1, 2, 1, 2, 2]),
-            new ScalePattern('Spanish Gypsy (Phrygian Dominant)', [1, 3, 1, 2, 1, 2, 2]),
             new ScalePattern('Hirajoshi', [2, 1, 4, 1, 4]),
             new ScalePattern('Iwato', [1, 4, 1, 4, 2]),
             new ScalePattern('Egyptian', [2, 3, 2, 3, 2]),
@@ -100,7 +99,7 @@ export class Scale {
     }
 
     transposeForTenorSax() {
-        const tenorSaxTranspose = 5;
+        const tenorSaxTranspose = 2;
         return this.notes().map(note => note.transpose(tenorSaxTranspose));
     }
 
@@ -155,7 +154,7 @@ export const scaleNames = [
     'Neapolitan Major',
     'Neapolitan Minor',
     'Gypsy',
-    'Spanish Gypsy (Phrygian Dominant)',
+    'Spanish Gypsy',
     'Hirajoshi',
     'Iwato',
     'Egyptian',
