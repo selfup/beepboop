@@ -3,6 +3,6 @@
 set -eou pipefail
 
 git add .
-git commit "compile docs"
+git commit -m "compile docs"
 git push origin HEAD
 git checkout main
