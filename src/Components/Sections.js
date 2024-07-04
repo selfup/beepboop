@@ -4,6 +4,7 @@ import { ScaleSection } from './ScaleSection.js';
 import { KeySection } from './KeySection.js';
 import { NotesSection } from './NotesSection.js';
 import { CustomNoteSection } from './CustomNoteSection.js';
+import { Modes } from './Modes.js';
 
 export function Sections({
   appSetState,
@@ -26,17 +27,15 @@ export function Sections({
         scaleKeyIndex={scaleKeyIndex}
         scaleNameIndex={scaleNameIndex}
       />
-
       <ScaleSection
         appSetState={appSetState}
         scaleName={scaleName}
         scaleKeyIndex={scaleKeyIndex}
         scaleNameIndex={scaleNameIndex}
       />
-
       <NotesSection customScale={customScale} />
-
       <CustomNoteSection customScale={customScale} />
+      <Modes />
     </div>
   );
 }
