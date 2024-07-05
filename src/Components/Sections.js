@@ -35,7 +35,7 @@ export function Sections({
       />
       <NotesSection customScale={customScale} />
       <CustomNoteSection customScale={customScale} />
-      <Modes />
+      <Modes customScale={customScale} />
     </div>
   );
 }
