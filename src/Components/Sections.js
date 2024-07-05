@@ -35,7 +35,11 @@ export function Sections({
       />
       <NotesSection customScale={customScale} />
       <CustomNoteSection customScale={customScale} />
-      <Modes customScale={customScale} />
+      <Modes
+        scaleKey={scaleKey}
+        scaleName={scaleName}
+        customScale={customScale}
+      />
     </div>
   );
 }

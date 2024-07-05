@@ -1,18 +1,33 @@
-export function Modes({ customScale }) {
+import { derivedMode } from '../logic';
+import {
+  AEOLIAN,
+  DORIAN,
+  LOCRIAN,
+  LYDIAN,
+  MIXOLYDIAN,
+  PHRYGIAN,
+} from '../constants';
+
+export function Modes({ scaleKey, scaleName, customScale }) {
   const concertNotes = customScale.notes().map((note) => note.name);
-  const altoSax = customScale
-    .transposeForAltoSax()
-    .map((note) => note.name);
+  const dorainNotes = derivedMode(concertNotes, DORIAN);
+  const phrygianNotes = derivedMode(concertNotes, PHRYGIAN);
+  const lydianNotes = derivedMode(concertNotes, LYDIAN);
+  const mixolydianNotes = derivedMode(concertNotes, MIXOLYDIAN);
+  const aeolianNotes = derivedMode(concertNotes, AEOLIAN);
+  const locrianNotes = derivedMode(concertNotes, LOCRIAN);
 
   return (
     <>
       <div className="mode-slices">
         <p className="section-name">
-          <b>C Major Derived Modes</b>
+          <b>
+            {scaleKey} {scaleName} Derived Modes
+          </b>
         </p>
         <div className="notes-section">
           <p className="notes">
-            Concert Ionian:{' '}
+            {concertNotes[0]} Ionian:{' '}
             {concertNotes.map((concertNote, idx) => (
               <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
                 {concertNote}{' '}
@@ -20,123 +35,54 @@ export function Modes({ customScale }) {
             ))}
           </p>
           <p className="notes">
-            Alto (Eb) Ionian:{' '}
-            {altoSax.map((altoNote, idx) => (
-              <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-                {altoNote}{' '}
-              </b>
-            ))}
-          </p>
-        </div>
-        <div className="notes-section">
-          <p className="notes">
-            Concert Dorian:{' '}
-            {concertNotes.map((concertNote, idx) => (
+            {dorainNotes[0]} Dorian:{' '}
+            {dorainNotes.map((concertNote, idx) => (
               <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
                 {concertNote}{' '}
               </b>
             ))}
           </p>
           <p className="notes">
-            Alto (Eb) Dorian:{' '}
-            {altoSax.map((altoNote, idx) => (
+            {phrygianNotes[0]} Phrygian:{' '}
+            {phrygianNotes.map((concertNote, idx) => (
               <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-                {altoNote}{' '}
+                {concertNote}{' '}
               </b>
             ))}
           </p>
-        </div>
 
-        <div className="notes-section">
           <p className="notes">
-            Concert Phrygian:{' '}
-            {concertNotes.map((concertNote, idx) => (
+            {lydianNotes[0]} Lydian:{' '}
+            {lydianNotes.map((concertNote, idx) => (
               <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
                 {concertNote}{' '}
               </b>
             ))}
           </p>
-          <p className="notes">
-            Alto (Eb) Phrygian:{' '}
-            {altoSax.map((altoNote, idx) => (
-              <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-                {altoNote}{' '}
-              </b>
-            ))}
-          </p>
-        </div>
 
-        <div className="notes-section">
           <p className="notes">
-            Concert Lydian:{' '}
-            {concertNotes.map((concertNote, idx) => (
+            {mixolydianNotes[0]} Mixolydian:{' '}
+            {mixolydianNotes.map((concertNote, idx) => (
               <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
                 {concertNote}{' '}
               </b>
             ))}
           </p>
-          <p className="notes">
-            Alto (Eb) Lydian:{' '}
-            {altoSax.map((altoNote, idx) => (
-              <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-                {altoNote}{' '}
-              </b>
-            ))}
-          </p>
-        </div>
 
-        <div className="notes-section">
           <p className="notes">
-            Concert Mixolydian:{' '}
-            {concertNotes.map((concertNote, idx) => (
+            {aeolianNotes[0]} Aeolian:{' '}
+            {aeolianNotes.map((concertNote, idx) => (
               <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
                 {concertNote}{' '}
               </b>
             ))}
           </p>
-          <p className="notes">
-            Alto (Eb) Mixolydian:{' '}
-            {altoSax.map((altoNote, idx) => (
-              <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-                {altoNote}{' '}
-              </b>
-            ))}
-          </p>
-        </div>
 
-        <div className="notes-section">
           <p className="notes">
-            Concert Aeolian:{' '}
-            {concertNotes.map((concertNote, idx) => (
+            {locrianNotes[0]} Locrian:{' '}
+            {locrianNotes.map((concertNote, idx) => (
               <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
                 {concertNote}{' '}
-              </b>
-            ))}
-          </p>
-          <p className="notes">
-            Alto (Eb) Aeolian:{' '}
-            {altoSax.map((altoNote, idx) => (
-              <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-                {altoNote}{' '}
-              </b>
-            ))}
-          </p>
-        </div>
-
-        <div className="notes-section">
-          <p className="notes">
-            Concert Locrian:{' '}
-            {concertNotes.map((concertNote, idx) => (
-              <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-                {concertNote}{' '}
-              </b>
-            ))}
-          </p>
-          <p className="notes">
-            Alto (Eb) Locrian:{' '}
-            {altoSax.map((altoNote, idx) => (
-              <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-                {altoNote}{' '}
               </b>
             ))}
           </p>
