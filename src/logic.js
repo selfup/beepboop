@@ -73,13 +73,17 @@ export class Note {
 
   next() {
     const allNotes = Note.all();
-    const currentIndex = allNotes.findIndex((note) => note.name === this.name);
+    const currentIndex = allNotes.findIndex(
+      (note) => note.name === this.name,
+    );
     return allNotes[(currentIndex + 1) % allNotes.length];
   }
 
   transpose(semitones) {
     const allNotes = Note.all();
-    const currentIndex = allNotes.findIndex((note) => note.name === this.name);
+    const currentIndex = allNotes.findIndex(
+      (note) => note.name === this.name,
+    );
     const newIndex =
       (currentIndex + semitones + allNotes.length) % allNotes.length;
     return allNotes[newIndex];
@@ -87,8 +91,12 @@ export class Note {
 
   toFretOnString(lowestStringNote) {
     const allNotes = Note.all();
-    const eIndex = allNotes.findIndex((note) => note.name === lowestStringNote);
-    const noteIndex = allNotes.findIndex((note) => note.name === this.name);
+    const eIndex = allNotes.findIndex(
+      (note) => note.name === lowestStringNote,
+    );
+    const noteIndex = allNotes.findIndex(
+      (note) => note.name === this.name,
+    );
     return (noteIndex - eIndex + 12) % 12;
   }
 }
@@ -103,8 +111,14 @@ export class ScalePattern {
     return [
       new ScalePattern(CONSTANTS.MAJOR, [2, 2, 1, 2, 2, 2, 1]),
       new ScalePattern(CONSTANTS.MINOR, [2, 1, 2, 2, 1, 2, 2]),
-      new ScalePattern(CONSTANTS.MELODIC_MINOR, [2, 1, 2, 2, 2, 2, 1]),
-      new ScalePattern(CONSTANTS.HARMONIC_MINOR, [2, 1, 2, 2, 1, 3, 1]),
+      new ScalePattern(
+        CONSTANTS.MELODIC_MINOR,
+        [2, 1, 2, 2, 2, 2, 1],
+      ),
+      new ScalePattern(
+        CONSTANTS.HARMONIC_MINOR,
+        [2, 1, 2, 2, 1, 3, 1],
+      ),
       new ScalePattern(CONSTANTS.DORIAN, [2, 1, 2, 2, 2, 1, 2]),
       new ScalePattern(CONSTANTS.PHRYGIAN, [1, 2, 2, 2, 1, 2, 2]),
       new ScalePattern(CONSTANTS.LYDIAN, [2, 2, 2, 1, 2, 2, 1]),
@@ -115,7 +129,10 @@ export class ScalePattern {
       new ScalePattern(CONSTANTS.PENTATONIC_MINOR, [3, 2, 2, 3, 2]),
       new ScalePattern(CONSTANTS.BLUES, [3, 2, 1, 1, 3, 2]),
       new ScalePattern(CONSTANTS.CHROMATIC, Array(12).fill(1)),
-      new ScalePattern(CONSTANTS.HUNGARIAN_MINOR, [2, 1, 3, 1, 1, 3, 1]),
+      new ScalePattern(
+        CONSTANTS.HUNGARIAN_MINOR,
+        [2, 1, 3, 1, 1, 3, 1],
+      ),
       new ScalePattern(CONSTANTS.PERSIAN, [1, 3, 1, 1, 2, 3, 1]),
       new ScalePattern(CONSTANTS.JAPANESE_IN_SEN, [1, 4, 2, 1, 4]),
       new ScalePattern(CONSTANTS.YO_SCALE, [2, 3, 2, 2, 3]),
@@ -124,10 +141,19 @@ export class ScalePattern {
       new ScalePattern(CONSTANTS.PROMETHEUS, [2, 2, 2, 3, 1, 2]),
       new ScalePattern(CONSTANTS.OVERTONE, [2, 2, 2, 1, 2, 1, 2]),
       new ScalePattern(CONSTANTS.ARABIC, [2, 1, 3, 1, 1, 3, 1]),
-      new ScalePattern(CONSTANTS.NEAPOLITAN_MAJOR, [1, 2, 2, 2, 2, 2, 1]),
-      new ScalePattern(CONSTANTS.NEAPOLITAN_MINOR, [1, 2, 2, 2, 1, 3, 1]),
+      new ScalePattern(
+        CONSTANTS.NEAPOLITAN_MAJOR,
+        [1, 2, 2, 2, 2, 2, 1],
+      ),
+      new ScalePattern(
+        CONSTANTS.NEAPOLITAN_MINOR,
+        [1, 2, 2, 2, 1, 3, 1],
+      ),
       new ScalePattern(CONSTANTS.GYPSY, [1, 3, 1, 2, 1, 3, 1]),
-      new ScalePattern(CONSTANTS.SPANISH_GYPSY, [1, 3, 1, 2, 1, 2, 2]),
+      new ScalePattern(
+        CONSTANTS.SPANISH_GYPSY,
+        [1, 3, 1, 2, 1, 2, 2],
+      ),
       new ScalePattern(CONSTANTS.HIRAJOSHI, [2, 1, 4, 1, 4]),
       new ScalePattern(CONSTANTS.IWATO, [1, 4, 1, 4, 2]),
       new ScalePattern(CONSTANTS.EGYPTIAN, [2, 3, 2, 3, 2]),
@@ -156,12 +182,16 @@ export class Scale {
 
   transposeForAltoSax() {
     const altoSaxTranspose = 9;
-    return this.notes().map((note) => note.transpose(altoSaxTranspose));
+    return this.notes().map((note) =>
+      note.transpose(altoSaxTranspose),
+    );
   }
 
   transposeForTenorSax() {
     const tenorSaxTranspose = 2;
-    return this.notes().map((note) => note.transpose(tenorSaxTranspose));
+    return this.notes().map((note) =>
+      note.transpose(tenorSaxTranspose),
+    );
   }
 
   transposeForGuitar(semitones) {
@@ -169,6 +199,31 @@ export class Scale {
   }
 
   toFretsOnString(lowestStringNote) {
-    return this.notes().map((note) => note.toFretOnString(lowestStringNote));
+    const notes = this.notes().map((note) =>
+      note.toFretOnString(lowestStringNote),
+    );
+
+    let firstNote = 0;
+    let goAbove12 = false;
+
+    return notes.map((note, idx) => {
+      if (idx === 0) {
+        firstNote = note;
+      }
+
+      if (note < firstNote) {
+        goAbove12 = true;
+      }
+
+      if (idx > 0 && note === firstNote) {
+        goAbove12 = true;
+      }
+
+      if (goAbove12) {
+        return note + 12;
+      } else {
+        return note;
+      }
+    });
   }
 }

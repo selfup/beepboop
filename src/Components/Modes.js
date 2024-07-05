@@ -1,3 +1,3 @@
 export function Modes() {
-  return <></>;
+  return <div></div>;
 }

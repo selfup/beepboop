@@ -16,7 +16,9 @@ export function KeySection({
           <button
             className="key-button"
             key={idx}
-            onClick={() => appSetState({ scaleKeyIndex: idx, scaleNameIndex })}
+            onClick={() =>
+              appSetState({ scaleKeyIndex: idx, scaleNameIndex })
+            }
           >
             {name}
           </button>
