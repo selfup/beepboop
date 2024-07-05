@@ -15,7 +15,7 @@ export function CustomNoteSection({ customScale }) {
 
   return (
     <>
-      <p>
+      <p className="section-name">
         Custom String Note: <b>{customStringNote}</b>
       </p>
       <div className="section">

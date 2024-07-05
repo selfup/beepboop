@@ -8,7 +8,7 @@ export function ScaleSection({
 }) {
   return (
     <>
-      <p>
+      <p className="section-name">
         Scale: <b>{scaleName}</b>
       </p>
       <div className="section">
