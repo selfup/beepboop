@@ -13,11 +13,12 @@ export function Sections({
   scaleNameIndex,
   scaleKeyIndex,
 }) {
-  const allPatterns = ScalePattern.allPatterns().find(
+  const scalePatterns = ScalePattern.allPatterns().find(
     (p) => p.name === scaleName,
   );
 
-  const customScale = new Scale(new Note(scaleKey), allPatterns);
+  const customScale = new Scale(new Note(scaleKey), scalePatterns);
+  const customScaleIntervals = scalePatterns.intervals;
 
   return (
     <div className="sections">
@@ -32,6 +33,7 @@ export function Sections({
         scaleName={scaleName}
         scaleKeyIndex={scaleKeyIndex}
         scaleNameIndex={scaleNameIndex}
+        customScaleIntervals={customScaleIntervals}
       />
       <NotesSection customScale={customScale} />
       <CustomNoteSection customScale={customScale} />

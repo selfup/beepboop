@@ -5,19 +5,23 @@ export function ScaleSection({
   scaleName,
   scaleKeyIndex,
   scaleNameIndex,
+  customScaleIntervals,
 }) {
   return (
     <>
       <p className="section-name">
-        Scale: <b>{scaleName}</b>
+        Scale: <b>{scaleName}</b> Intervals:{' '}
+        {customScaleIntervals.map((interval, idx) => (
+          <b key={idx} style={{ color: idx % 2 ? '' : '#90e4c8' }}>
+            {interval}
+          </b>
+        ))}
       </p>
       <div className="section">
         {scaleNames.map((name, idx) => (
           <button
             key={idx}
-            onClick={() =>
-              appSetState({ scaleKeyIndex, scaleNameIndex: idx })
-            }
+            onClick={() => appSetState({ scaleKeyIndex, scaleNameIndex: idx })}
           >
             {name}
           </button>
