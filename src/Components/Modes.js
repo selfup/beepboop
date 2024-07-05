@@ -21,7 +21,7 @@ export function Modes({ scaleKey, scaleName, customScale }) {
     <>
       <div className="mode-slices">
         <p className="section-name">
-          <b>Derived Modes</b>
+          Derived <b>Modes</b>
         </p>
         <div className="notes-section">
           <p className="notes">
