@@ -1,12 +1,31 @@
+import {
+  scaleNotes,
+  transposeForAltoSax,
+  transposeForTenorSax,
+  toFretsOnString,
+} from '../lib/scales';
+
 export function NotesSection({ customScale }) {
-  const concertNotes = customScale.notes().map((note) => note.name);
-  const altoSax = customScale
-    .transposeForAltoSax()
-    .map((note) => note.name);
-  const tenorSax = customScale
-    .transposeForTenorSax()
-    .map((note) => note.name);
-  const lowEString = customScale.toFretsOnString('E');
+  const concertNotes = scaleNotes(
+    customScale.root,
+    customScale.pattern,
+  ).map((note) => note.name);
+
+  const altoSax = transposeForAltoSax(
+    customScale.root,
+    customScale.pattern,
+  ).map((note) => note.name);
+
+  const tenorSax = transposeForTenorSax(
+    customScale.root,
+    customScale.pattern,
+  ).map((note) => note.name);
+
+  const lowEString = toFretsOnString(
+    customScale.root,
+    customScale.pattern,
+    'E',
+  );
 
   return (
     <div className="notes-section">

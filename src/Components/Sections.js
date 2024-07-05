@@ -1,10 +1,12 @@
-import { Note, Scale, ScalePattern } from '../logic.js';
-
 import { ScaleSection } from './Scale.js';
 import { KeySection } from './Key.js';
 import { NotesSection } from './Notes.js';
 import { CustomNoteSection } from './CustomNote.js';
 import { Modes } from './Modes.js';
+
+import { Note } from '../lib/notes.js';
+import { Scale } from '../lib/scales.js';
+import { allPatterns } from '../lib/patterns.js';
 
 export function Sections({
   appSetState,
@@ -13,11 +15,10 @@ export function Sections({
   scaleNameIndex,
   scaleKeyIndex,
 }) {
-  const scalePatterns = ScalePattern.allPatterns().find(
+  const scalePatterns = allPatterns().find(
     (p) => p.name === scaleName,
   );
-
-  const customScale = new Scale(new Note(scaleKey), scalePatterns);
+  const customScale = Scale(Note(scaleKey), scalePatterns);
   const customScaleIntervals = scalePatterns.intervals;
 
   return (
@@ -25,14 +26,12 @@ export function Sections({
       <KeySection
         appSetState={appSetState}
         scaleKey={scaleKey}
-        scaleKeyIndex={scaleKeyIndex}
         scaleNameIndex={scaleNameIndex}
       />
       <ScaleSection
         appSetState={appSetState}
         scaleName={scaleName}
         scaleKeyIndex={scaleKeyIndex}
-        scaleNameIndex={scaleNameIndex}
         customScaleIntervals={customScaleIntervals}
       />
       <NotesSection customScale={customScale} />

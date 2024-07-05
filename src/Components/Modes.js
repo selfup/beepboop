@@ -1,4 +1,3 @@
-import { derivedMode } from '../logic';
 import {
   AEOLIAN,
   DORIAN,
@@ -6,10 +5,15 @@ import {
   LYDIAN,
   MIXOLYDIAN,
   PHRYGIAN,
-} from '../constants';
+} from '../lib/constants';
+import { scaleNotes, derivedMode } from '../lib/scales';
 
-export function Modes({ scaleKey, scaleName, customScale }) {
-  const concertNotes = customScale.notes().map((note) => note.name);
+export function Modes({ scaleName, customScale }) {
+  const concertNotes = scaleNotes(
+    customScale.root,
+    customScale.pattern,
+  ).map((note) => note.name);
+
   const dorainNotes = derivedMode(concertNotes, DORIAN);
   const phrygianNotes = derivedMode(concertNotes, PHRYGIAN);
   const lydianNotes = derivedMode(concertNotes, LYDIAN);
