@@ -21,13 +21,11 @@ export function Modes({ scaleKey, scaleName, customScale }) {
     <>
       <div className="mode-slices">
         <p className="section-name">
-          <b>
-            {scaleKey} {scaleName} Derived Modes
-          </b>
+          <b>Derived Modes</b>
         </p>
         <div className="notes-section">
           <p className="notes">
-            {concertNotes[0]} Ionian:{' '}
+            {concertNotes[0]} {scaleName} Ionian:{' '}
             {concertNotes.map((concertNote, idx) => (
               <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
                 {concertNote}{' '}

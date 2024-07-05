@@ -123,13 +123,13 @@ export function derivedMode(notes, mode) {
   return newNotes;
 }
 
-export function swapper(newNotes, swaps) {
-  const swapArray = [...new Array(swaps)];
+export function swapper(newNotes, swaps, swapCount = 0) {
+  if (swaps === swapCount) return;
 
-  swapArray.forEach((_, idx) => {
-    newNotes.shift();
-    newNotes.push(newNotes[idx]);
-  });
+  newNotes.shift();
+  newNotes.push(newNotes[0]);
+
+  swapper(newNotes, swaps, swapCount + 1);
 }
 
 export class ScalePattern {
