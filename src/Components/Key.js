@@ -8,7 +8,7 @@ export function KeySection({
 }) {
   return (
     <>
-      <p>
+      <p className="section-name">
         Key: <b>{scaleKey}</b>
       </p>
       <div className="section">

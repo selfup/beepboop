@@ -20,7 +20,7 @@ export function Sections({
   const customScale = new Scale(new Note(scaleKey), allPatterns);
 
   return (
-    <div>
+    <div className="sections">
       <KeySection
         appSetState={appSetState}
         scaleKey={scaleKey}
