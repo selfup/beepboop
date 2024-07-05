@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { keyNames, scaleNames } from './logic.js';
+import { keyNames } from './lib/keys.js';
+import { scaleNames } from './lib/scales.js';
 
 import { Sections } from './Components/Sections.js';
 import './App.css';

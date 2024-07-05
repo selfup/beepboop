@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { keyNames } from '../logic.js';
+import { keyNames } from '../lib/keys';
+import { toFretsOnString } from '../lib/scales';
 
 export function CustomNoteSection({ customScale }) {
   const [state, setState] = useState({
@@ -10,8 +11,11 @@ export function CustomNoteSection({ customScale }) {
 
   const customStringNote = keyNames[customStringIndex];
 
-  const customStringNotes =
-    customScale.toFretsOnString(customStringNote);
+  const customStringNotes = toFretsOnString(
+    customScale.root,
+    customScale.pattern,
+    customStringNote,
+  );
 
   return (
     <>

@@ -1,9 +1,8 @@
-import { keyNames } from '../logic.js';
+import { keyNames } from '../lib/keys';
 
 export function KeySection({
   appSetState,
   scaleKey,
-  scaleKeyIndex,
   scaleNameIndex,
 }) {
   return (

@@ -1,0 +1,48 @@
+import * as CONSTANTS from './constants';
+
+export const allPatterns = () => [
+  { name: CONSTANTS.MAJOR, intervals: [2, 2, 1, 2, 2, 2, 1] },
+  { name: CONSTANTS.MINOR, intervals: [2, 1, 2, 2, 1, 2, 2] },
+  { name: CONSTANTS.MELODIC_MINOR, intervals: [2, 1, 2, 2, 2, 2, 1] },
+  {
+    name: CONSTANTS.HARMONIC_MINOR,
+    intervals: [2, 1, 2, 2, 1, 3, 1],
+  },
+  { name: CONSTANTS.DORIAN, intervals: [2, 1, 2, 2, 2, 1, 2] },
+  { name: CONSTANTS.PHRYGIAN, intervals: [1, 2, 2, 2, 1, 2, 2] },
+  { name: CONSTANTS.LYDIAN, intervals: [2, 2, 2, 1, 2, 2, 1] },
+  { name: CONSTANTS.MIXOLYDIAN, intervals: [2, 2, 1, 2, 2, 1, 2] },
+  { name: CONSTANTS.LOCRIAN, intervals: [1, 2, 2, 1, 2, 2, 2] },
+  { name: CONSTANTS.AEOLIAN, intervals: [2, 1, 2, 2, 1, 2, 2] },
+  { name: CONSTANTS.WHOLE_TONE, intervals: [2, 2, 2, 2, 2, 2] },
+  { name: CONSTANTS.PENTATONIC_MAJOR, intervals: [2, 2, 3, 2, 3] },
+  { name: CONSTANTS.PENTATONIC_MINOR, intervals: [3, 2, 2, 3, 2] },
+  { name: CONSTANTS.BLUES, intervals: [3, 2, 1, 1, 3, 2] },
+  { name: CONSTANTS.CHROMATIC, intervals: Array(12).fill(1) },
+  {
+    name: CONSTANTS.HUNGARIAN_MINOR,
+    intervals: [2, 1, 3, 1, 1, 3, 1],
+  },
+  { name: CONSTANTS.PERSIAN, intervals: [1, 3, 1, 1, 2, 3, 1] },
+  { name: CONSTANTS.JAPANESE_IN_SEN, intervals: [1, 4, 2, 1, 4] },
+  { name: CONSTANTS.YO_SCALE, intervals: [2, 3, 2, 2, 3] },
+  { name: CONSTANTS.BALINESE, intervals: [1, 2, 3, 1, 1, 2, 2] },
+  { name: CONSTANTS.PELOG, intervals: [1, 2, 2, 1, 2, 2, 2] },
+  { name: CONSTANTS.PROMETHEUS, intervals: [2, 2, 2, 3, 1, 2] },
+  { name: CONSTANTS.OVERTONE, intervals: [2, 2, 2, 1, 2, 1, 2] },
+  { name: CONSTANTS.ARABIC, intervals: [2, 1, 3, 1, 1, 3, 1] },
+  {
+    name: CONSTANTS.NEAPOLITAN_MAJOR,
+    intervals: [1, 2, 2, 2, 2, 2, 1],
+  },
+  {
+    name: CONSTANTS.NEAPOLITAN_MINOR,
+    intervals: [1, 2, 2, 2, 1, 3, 1],
+  },
+  { name: CONSTANTS.GYPSY, intervals: [1, 3, 1, 2, 1, 3, 1] },
+  { name: CONSTANTS.SPANISH_GYPSY, intervals: [1, 3, 1, 2, 1, 2, 2] },
+  { name: CONSTANTS.HIRAJOSHI, intervals: [2, 1, 4, 1, 4] },
+  { name: CONSTANTS.IWATO, intervals: [1, 4, 1, 4, 2] },
+  { name: CONSTANTS.EGYPTIAN, intervals: [2, 3, 2, 3, 2] },
+  { name: CONSTANTS.CHINESE, intervals: [4, 2, 1, 4, 1] },
+];

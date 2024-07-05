@@ -1,10 +1,9 @@
-import { scaleNames } from '../logic.js';
+import { scaleNames } from '../lib/scales';
 
 export function ScaleSection({
   appSetState,
   scaleName,
   scaleKeyIndex,
-  scaleNameIndex,
   customScaleIntervals,
 }) {
   return (
@@ -21,7 +20,9 @@ export function ScaleSection({
         {scaleNames.map((name, idx) => (
           <button
             key={idx}
-            onClick={() => appSetState({ scaleKeyIndex, scaleNameIndex: idx })}
+            onClick={() =>
+              appSetState({ scaleKeyIndex, scaleNameIndex: idx })
+            }
           >
             {name}
           </button>
