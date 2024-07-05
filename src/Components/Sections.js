@@ -1,9 +1,9 @@
 import { Note, Scale, ScalePattern } from '../logic.js';
 
-import { ScaleSection } from './ScaleSection.js';
-import { KeySection } from './KeySection.js';
-import { NotesSection } from './NotesSection.js';
-import { CustomNoteSection } from './CustomNoteSection.js';
+import { ScaleSection } from './Scale.js';
+import { KeySection } from './Key.js';
+import { NotesSection } from './Notes.js';
+import { CustomNoteSection } from './CustomNote.js';
 import { Modes } from './Modes.js';
 
 export function Sections({

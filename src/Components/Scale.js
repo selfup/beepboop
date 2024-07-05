@@ -15,7 +15,9 @@ export function ScaleSection({
         {scaleNames.map((name, idx) => (
           <button
             key={idx}
-            onClick={() => appSetState({ scaleKeyIndex, scaleNameIndex: idx })}
+            onClick={() =>
+              appSetState({ scaleKeyIndex, scaleNameIndex: idx })
+            }
           >
             {name}
           </button>

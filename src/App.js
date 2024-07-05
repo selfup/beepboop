@@ -5,7 +5,10 @@ import { Sections } from './Components/Sections.js';
 import './App.css';
 
 function App() {
-  const [state, setState] = useState({ scaleKeyIndex: 0, scaleNameIndex: 0 });
+  const [state, setState] = useState({
+    scaleKeyIndex: 0,
+    scaleNameIndex: 0,
+  });
 
   const { scaleKeyIndex, scaleNameIndex } = state;
 

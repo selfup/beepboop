@@ -10,9 +10,8 @@ export function CustomNoteSection({ customScale }) {
 
   const customStringNote = keyNames[customStringIndex];
 
-  const customStringNotes = customScale
-    .toFretsOnString(customStringNote)
-    .join(', ');
+  const customStringNotes =
+    customScale.toFretsOnString(customStringNote);
 
   return (
     <>
@@ -32,7 +31,12 @@ export function CustomNoteSection({ customScale }) {
       </div>
       <div className="notes-section">
         <p className="notes">
-          Custom String <b>{customStringNote}</b>: {customStringNotes}
+          Custom String <b>{customStringNote}</b>:{' '}
+          {customStringNotes.map((customNote, idx) => (
+            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
+              {customNote}{' '}
+            </b>
+          ))}
         </p>
       </div>
     </>
