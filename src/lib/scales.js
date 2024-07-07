@@ -87,6 +87,12 @@ export const toFretsOnString = (root, pattern, lowestStringNote) => {
   });
 };
 
+export const modeScales = [
+  CONSTANTS.MAJOR,
+  CONSTANTS.HARMONIC_MINOR,
+  CONSTANTS.MELODIC_MINOR,
+];
+
 export const derivedMode = (notes, mode) => {
   let newNotes = [...notes];
 

@@ -3,6 +3,7 @@ import { KeySection } from './Key.js';
 import { NotesSection } from './Notes.js';
 import { CustomNoteSection } from './CustomNote.js';
 import { Modes } from './Modes.js';
+import { Triads } from './Triads.js';
 
 import { Note } from '../lib/notes.js';
 import { Scale } from '../lib/scales.js';
@@ -36,15 +37,12 @@ export function Sections({
       />
       <NotesSection customScale={customScale} />
       <CustomNoteSection customScale={customScale} />
-      {scaleName === 'Major' ? (
-        <Modes
-          scaleKey={scaleKey}
-          scaleName={scaleName}
-          customScale={customScale}
-        />
-      ) : (
-        ''
-      )}
+      <Modes
+        scaleKey={scaleKey}
+        scaleName={scaleName}
+        customScale={customScale}
+      />
+      <Triads scaleKey={scaleKey} scaleName={scaleName} />
     </div>
   );
 }
