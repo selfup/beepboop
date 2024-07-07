@@ -124,6 +124,7 @@ function derivedSection(concertNotes, scaleName) {
     return (
       <div className="notes-section">
         <p className="notes">
+          <b>* </b>
           {concertNotes[0]} Harmonic Minor:{' '}
           {concertNotes.map((concertNote, idx) => (
             <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
@@ -149,6 +150,7 @@ function derivedSection(concertNotes, scaleName) {
         </p>
 
         <p className="notes">
+          <b>* </b>
           {lydianNotes[0]} Dorian #4:{' '}
           {lydianNotes.map((concertNote, idx) => (
             <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
@@ -158,6 +160,7 @@ function derivedSection(concertNotes, scaleName) {
         </p>
 
         <p className="notes">
+          <b>* </b>
           {mixolydianNotes[0]} Phrygian Dominant:{' '}
           {mixolydianNotes.map((concertNote, idx) => (
             <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
@@ -191,6 +194,7 @@ function derivedSection(concertNotes, scaleName) {
     return (
       <div className="notes-section">
         <p className="notes">
+          <b>* </b>
           {concertNotes[0]} Melodic Minor:{' '}
           {concertNotes.map((concertNote, idx) => (
             <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
@@ -216,6 +220,7 @@ function derivedSection(concertNotes, scaleName) {
         </p>
 
         <p className="notes">
+          <b>* </b>
           {lydianNotes[0]} Lydian Dominant:{' '}
           {lydianNotes.map((concertNote, idx) => (
             <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
@@ -225,6 +230,7 @@ function derivedSection(concertNotes, scaleName) {
         </p>
 
         <p className="notes">
+          <b>* </b>
           {mixolydianNotes[0]} Mixolydian b6:{' '}
           {mixolydianNotes.map((concertNote, idx) => (
             <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
