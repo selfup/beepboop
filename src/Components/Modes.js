@@ -1,19 +1,31 @@
 import {
   AEOLIAN,
   DORIAN,
+  DORIAN_FLAT_2,
+  DORIAN_SHARP_4,
   HARMONIC_MINOR,
+  IONIAN,
+  IONIAN_SHARP_5,
   LOCRIAN,
+  LOCRIAN_SHARP_6,
+  SUPERLOCRIAN,
+  ULTRALOCRIAN,
   LYDIAN,
+  LYDIAN_AUGMENTED,
+  LYDIAN_DOMINANT,
+  LYDIAN_SHARP_2,
   MAJOR,
   MELODIC_MINOR,
   MIXOLYDIAN,
+  MIXOLYDIAN_FLAT_6,
   PHRYGIAN,
+  PHRYGIAN_DOMINANT,
 } from '../lib/constants';
 
 import { scaleNotes, derivedMode, modeScales } from '../lib/scales';
 
 export function Modes({ scaleName, customScale }) {
-  const concertNotes = scaleNotes(
+  const firstModeNotes = scaleNotes(
     customScale.root,
     customScale.pattern,
   ).map((note) => note.name);
@@ -25,7 +37,7 @@ export function Modes({ scaleName, customScale }) {
           <p className="section-name">
             Derived <b>Modes</b>
           </p>
-          {derivedSection(concertNotes, scaleName)}
+          {derivedSection(firstModeNotes, scaleName)}
         </div>
       </>
     );
@@ -45,77 +57,24 @@ export function Modes({ scaleName, customScale }) {
   }
 }
 
-function derivedSection(concertNotes, scaleName) {
-  const firstModeNotes = derivedMode(concertNotes, DORIAN);
-  const phrygianNotes = derivedMode(concertNotes, PHRYGIAN);
-  const lydianNotes = derivedMode(concertNotes, LYDIAN);
-  const mixolydianNotes = derivedMode(concertNotes, MIXOLYDIAN);
-  const aeolianNotes = derivedMode(concertNotes, AEOLIAN);
-  const locrianNotes = derivedMode(concertNotes, LOCRIAN);
+function derivedSection(firstModeNotes, scaleName) {
+  const secondModeNotes = derivedMode(firstModeNotes, DORIAN);
+  const thirdModeNotes = derivedMode(firstModeNotes, PHRYGIAN);
+  const fourthModeNotes = derivedMode(firstModeNotes, LYDIAN);
+  const fifthModeNotes = derivedMode(firstModeNotes, MIXOLYDIAN);
+  const sixthModeNotes = derivedMode(firstModeNotes, AEOLIAN);
+  const seventhModeNotes = derivedMode(firstModeNotes, LOCRIAN);
 
   if (scaleName === MAJOR) {
     return (
       <div className="notes-section">
-        <p className="notes">
-          {concertNotes[0]} {scaleName} Ionian:{' '}
-          {concertNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-        <p className="notes">
-          {firstModeNotes[0]} Dorian:{' '}
-          {firstModeNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-        <p className="notes">
-          {phrygianNotes[0]} Phrygian:{' '}
-          {phrygianNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-
-        <p className="notes">
-          {lydianNotes[0]} Lydian:{' '}
-          {lydianNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-
-        <p className="notes">
-          {mixolydianNotes[0]} Mixolydian:{' '}
-          {mixolydianNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-
-        <p className="notes">
-          {aeolianNotes[0]} Aeolian:{' '}
-          {aeolianNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-
-        <p className="notes">
-          {locrianNotes[0]} Locrian:{' '}
-          {locrianNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
+        {derivedShift(firstModeNotes, IONIAN)}
+        {derivedShift(secondModeNotes, DORIAN)}
+        {derivedShift(thirdModeNotes, PHRYGIAN)}
+        {derivedShift(fourthModeNotes, LYDIAN)}
+        {derivedShift(fifthModeNotes, MIXOLYDIAN)}
+        {derivedShift(sixthModeNotes, AEOLIAN)}
+        {derivedShift(seventhModeNotes, LOCRIAN)}
       </div>
     );
   }
@@ -123,69 +82,13 @@ function derivedSection(concertNotes, scaleName) {
   if (scaleName === HARMONIC_MINOR) {
     return (
       <div className="notes-section">
-        <p className="notes">
-          <b>* </b>
-          {concertNotes[0]} Harmonic Minor:{' '}
-          {concertNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-        <p className="notes">
-          {firstModeNotes[0]} Locrian #6:{' '}
-          {firstModeNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-        <p className="notes">
-          {phrygianNotes[0]} Ionian #5:{' '}
-          {phrygianNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-
-        <p className="notes">
-          <b>* </b>
-          {lydianNotes[0]} Dorian #4:{' '}
-          {lydianNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-
-        <p className="notes">
-          <b>* </b>
-          {mixolydianNotes[0]} Phrygian Dominant:{' '}
-          {mixolydianNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-
-        <p className="notes">
-          {aeolianNotes[0]} Lydian #2:{' '}
-          {aeolianNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-
-        <p className="notes">
-          {locrianNotes[0]} Ultralocrian:{' '}
-          {locrianNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
+        {derivedShift(firstModeNotes, HARMONIC_MINOR, true)}
+        {derivedShift(secondModeNotes, LOCRIAN_SHARP_6)}
+        {derivedShift(thirdModeNotes, IONIAN_SHARP_5)}
+        {derivedShift(fourthModeNotes, DORIAN_SHARP_4, true)}
+        {derivedShift(fifthModeNotes, PHRYGIAN_DOMINANT, true)}
+        {derivedShift(sixthModeNotes, LYDIAN_SHARP_2)}
+        {derivedShift(seventhModeNotes, ULTRALOCRIAN)}
       </div>
     );
   }
@@ -193,70 +96,28 @@ function derivedSection(concertNotes, scaleName) {
   if (scaleName === MELODIC_MINOR) {
     return (
       <div className="notes-section">
-        <p className="notes">
-          <b>* </b>
-          {concertNotes[0]} Melodic Minor:{' '}
-          {concertNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-        <p className="notes">
-          {firstModeNotes[0]} Dorian b2:{' '}
-          {firstModeNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-        <p className="notes">
-          {phrygianNotes[0]} Lydian Augmented:{' '}
-          {phrygianNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-
-        <p className="notes">
-          <b>* </b>
-          {lydianNotes[0]} Lydian Dominant:{' '}
-          {lydianNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-
-        <p className="notes">
-          <b>* </b>
-          {mixolydianNotes[0]} Mixolydian b6:{' '}
-          {mixolydianNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-
-        <p className="notes">
-          {aeolianNotes[0]} Locrian #2:{' '}
-          {aeolianNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
-
-        <p className="notes">
-          {locrianNotes[0]} Superlocrian:{' '}
-          {locrianNotes.map((concertNote, idx) => (
-            <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-              {concertNote}{' '}
-            </b>
-          ))}
-        </p>
+        {derivedShift(firstModeNotes, HARMONIC_MINOR, true)}
+        {derivedShift(secondModeNotes, DORIAN_FLAT_2)}
+        {derivedShift(thirdModeNotes, LYDIAN_AUGMENTED)}
+        {derivedShift(fourthModeNotes, LYDIAN_DOMINANT, true)}
+        {derivedShift(fifthModeNotes, PHRYGIAN_DOMINANT, true)}
+        {derivedShift(sixthModeNotes, MIXOLYDIAN_FLAT_6)}
+        {derivedShift(seventhModeNotes, SUPERLOCRIAN)}
       </div>
     );
   }
+}
+
+function derivedShift(notes, mode, useful = false) {
+  return (
+    <p className="notes">
+      {useful ? <b>* </b> : ''}
+      {notes[0]} {mode}:{' '}
+      {notes.map((note, idx) => (
+        <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
+          {note}{' '}
+        </b>
+      ))}
+    </p>
+  );
 }
