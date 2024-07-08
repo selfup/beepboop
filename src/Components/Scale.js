@@ -14,7 +14,8 @@ export function ScaleSection({
           <b key={idx} style={{ color: idx % 2 ? '' : '#90e4c8' }}>
             {interval}
           </b>
-        ))}
+        ))}{' '}
+        Notes: <b>{customScaleIntervals.length}</b>
       </p>
       <div className="section">
         {scaleNames.map((name, idx) => (
