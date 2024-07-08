@@ -1,7 +1,6 @@
 import { ScaleSection } from './Scale.js';
 import { KeySection } from './Key.js';
 import { NotesSection } from './Notes.js';
-import { CustomNoteSection } from './CustomNote.js';
 import { Modes } from './Modes.js';
 import { Triads } from './Triads.js';
 
@@ -19,7 +18,9 @@ export function Sections({
   const scalePatterns = allPatterns().find(
     (p) => p.name === scaleName,
   );
+
   const customScale = Scale(Note(scaleKey), scalePatterns);
+
   const customScaleIntervals = scalePatterns.intervals;
 
   return (
@@ -36,7 +37,7 @@ export function Sections({
         customScaleIntervals={customScaleIntervals}
       />
       <NotesSection customScale={customScale} />
-      <CustomNoteSection customScale={customScale} />
+      {/* <CustomNoteSection customScale={customScale} /> */}
       <Modes
         scaleKey={scaleKey}
         scaleName={scaleName}
