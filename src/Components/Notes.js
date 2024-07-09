@@ -87,7 +87,7 @@ export function NotesSection({ customScale }) {
 
   return (
     <div className="notes-section">
-      <p className="section-name">Winds</p>
+      <p className="inner-section-name">Winds</p>
       <table style={{ width: '100%', display: 'inline' }}>
         <tbody>
           <tr className="notes">
@@ -107,7 +107,7 @@ export function NotesSection({ customScale }) {
       <div>
         <p></p>
       </div>
-      <p className="section-name">Guitar</p>
+      <p className="inner-section-name">Guitar</p>
       <table style={{ width: '100%', display: 'inline' }}>
         <tbody>
           {strings.map((string, stringIndex) =>
@@ -124,7 +124,7 @@ export function NotesSection({ customScale }) {
       <div>
         <p></p>
       </div>
-      <div className="notes">Alternate Tunings</div>
+      <p className="inner-section-name">Alternate Tunings</p>
       <div>
         <button onClick={() => setState({ strings: eStandard() })}>
           E Standard
@@ -147,7 +147,7 @@ export function NotesSection({ customScale }) {
           B Standard
         </button>
       </div>
-      <div className="notes">Regis Mods</div>
+      <p className="inner-section-name">Common Regis Mods</p>
       <div>
         <button
           disabled={moded}
