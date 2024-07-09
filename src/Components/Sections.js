@@ -43,7 +43,11 @@ export function Sections({
         scaleName={scaleName}
         customScale={customScale}
       />
-      <Triads scaleKey={scaleKey} scaleName={scaleName} />
+      <Triads
+        scaleKey={scaleKey}
+        scaleName={scaleName}
+        customScale={customScale}
+      />
     </div>
   );
 }
