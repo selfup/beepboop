@@ -1,27 +1,74 @@
+import { useState } from 'react';
+
 import {
   scaleNotes,
   transposeForAltoSax,
   transposeForTenorSax,
-  toFretsOnString,
 } from '../lib/scales';
 
-import { keyNames } from '../lib/keys';
+import { stringRow, mapTableNotes, tuningMod } from './Helpers';
 
-import { useState } from 'react';
+const eStandard = () => [
+  { position: 4 },
+  { position: 9 },
+  { position: 2 },
+  { position: 7 },
+  { position: 11 },
+  { position: 4 },
+];
+
+const dropD = () => [
+  { position: 2 },
+  { position: 7 },
+  { position: 2 },
+  { position: 7 },
+  { position: 11 },
+  { position: 2 },
+];
+
+const openG = () => [
+  { position: 2 },
+  { position: 7 },
+  { position: 2 },
+  { position: 7 },
+  { position: 11 },
+  { position: 2 },
+];
+
+const dStandard = () => [
+  { position: 2 },
+  { position: 7 },
+  { position: 0 },
+  { position: 5 },
+  { position: 9 },
+  { position: 2 },
+];
+
+const cStandard = () => [
+  { position: 0 },
+  { position: 5 },
+  { position: 10 },
+  { position: 3 },
+  { position: 7 },
+  { position: 0 },
+];
+
+const bStandard = () => [
+  { position: 11 },
+  { position: 4 },
+  { position: 9 },
+  { position: 2 },
+  { position: 6 },
+  { position: 11 },
+];
 
 export function NotesSection({ customScale }) {
   const [state, setState] = useState({
-    strings: [
-      { idx: 4 },
-      { idx: 9 },
-      { idx: 2 },
-      { idx: 7 },
-      { idx: 11 },
-      { idx: 4 },
-    ],
+    moded: false,
+    strings: eStandard(),
   });
 
-  const { strings } = state;
+  const { moded, strings } = state;
 
   const concertNotes = scaleNotes(
     customScale.root,
@@ -40,88 +87,108 @@ export function NotesSection({ customScale }) {
 
   return (
     <div className="notes-section">
-      <p className="notes">Concert Notes: {mapNotes(concertNotes)}</p>
-      <p className="notes">Alto Sax (Eb): {mapNotes(altoSax)}</p>
-      <p className="notes">Tenor Sax (Bb): {mapNotes(tenorSax)}</p>
+      <p className="section-name">Winds</p>
       <table style={{ width: '100%', display: 'inline' }}>
         <tbody>
-          {strings.map((string, i) =>
-            stringRow({ i, string, strings, customScale, setState }),
+          <tr className="notes">
+            <td>Concert Notes:</td>
+            {mapTableNotes(concertNotes)}
+          </tr>
+          <tr className="notes">
+            <td className="notes">Alto Sax (Eb):</td>
+            {mapTableNotes(altoSax)}
+          </tr>
+          <tr className="notes">
+            <td className="notes">Tenor Sax (Bb):</td>
+            {mapTableNotes(tenorSax)}
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <p></p>
+      </div>
+      <p className="section-name">Guitar</p>
+      <table style={{ width: '100%', display: 'inline' }}>
+        <tbody>
+          {strings.map((string, stringIndex) =>
+            stringRow({
+              string,
+              stringIndex,
+              strings,
+              customScale,
+              setState,
+            }),
           )}
         </tbody>
       </table>
+      <div>
+        <p></p>
+      </div>
+      <div className="notes">Alternate Tunings</div>
+      <div>
+        <button onClick={() => setState({ strings: eStandard() })}>
+          E Standard
+        </button>
+        <button onClick={() => setState({ strings: dropD() })}>
+          Drop D
+        </button>
+        <button onClick={() => setState({ strings: openG() })}>
+          Open G
+        </button>
+      </div>
+      <div>
+        <button onClick={() => setState({ strings: dStandard() })}>
+          D Standard
+        </button>
+        <button onClick={() => setState({ strings: cStandard() })}>
+          C Standard
+        </button>
+        <button onClick={() => setState({ strings: bStandard() })}>
+          B Standard
+        </button>
+      </div>
+      <div className="notes">Regis Mods</div>
+      <div>
+        <button
+          disabled={moded}
+          style={{ backgroundColor: moded ? 'grey' : '' }}
+          onClick={() => {
+            const mod = 'Hypno';
+            let currentStrings = [...strings];
+
+            tuningMod({ mod, currentStrings });
+            setState({ strings: currentStrings, moded: true });
+          }}
+        >
+          Hypno
+        </button>
+        <button
+          disabled={moded}
+          style={{ backgroundColor: moded ? 'grey' : '' }}
+          onClick={() => {
+            const mod = '4th Up';
+            let currentStrings = [...strings];
+
+            tuningMod({ mod, currentStrings });
+            setState({ strings: currentStrings, moded: true });
+          }}
+        >
+          4th Up
+        </button>
+        <button
+          disabled={moded}
+          style={{ backgroundColor: moded ? 'grey' : '' }}
+          onClick={() => {
+            const mod = '4th Up Drop 5';
+            let currentStrings = [...strings];
+
+            tuningMod({ mod, currentStrings });
+            setState({ strings: currentStrings, moded: true });
+          }}
+        >
+          4th Up Down 5
+        </button>
+      </div>
     </div>
   );
-}
-
-const stringRow = ({ i, string, strings, customScale, setState }) => {
-  let newStrings = [...strings];
-
-  const keyName = keyNames[string.idx];
-
-  const scaleOnString = toFretsOnString(
-    customScale.root,
-    customScale.pattern,
-    keyName,
-  );
-
-  return (
-    <tr key={i} className="notes">
-      {/* <td> */}
-      <td>
-        <button
-          className="string-transpose"
-          onClick={() => {
-            let newString = newStrings[i];
-
-            if (newString.idx === 0) {
-              newString.idx = 11;
-            } else {
-              newString.idx -= 1;
-            }
-
-            setState({ strings: newStrings });
-          }}
-        >
-          <b>{'<'}</b>
-        </button>
-      </td>
-      <td>
-        <button
-          className="string-transpose"
-          onClick={() => {
-            let newString = newStrings[i];
-
-            if (newString.idx === 11) {
-              newString.idx = 0;
-            } else {
-              newString.idx += 1;
-            }
-
-            setState({ strings: newStrings });
-          }}
-        >
-          <b>{'>'}</b>
-        </button>{' '}
-        {keyName} String:
-      </td>
-      {mapTableNotes(scaleOnString)}
-    </tr>
-  );
-};
-
-function mapNotes(notes) {
-  return notes.map((note, idx) => (
-    <b key={idx} style={{ color: idx % 2 ? '' : 'coral' }}>
-      {note}{' '}
-    </b>
-  ));
-}
-
-function mapTableNotes(notes) {
-  return notes.map((note, idx) => (
-    <td style={{ color: idx % 2 ? '' : 'coral' }} key={idx}>
-      <b>{note}</b>
-    </td>
-  ));
 }
