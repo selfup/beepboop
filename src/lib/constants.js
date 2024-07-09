@@ -11,10 +11,10 @@ export const A = 'A';
 export const A_SHARP = 'A#';
 export const B = 'B';
 
-export const MAJOR = 'Major';
+export const MAJOR = 'Maj';
 export const PENTATONIC_MAJOR = 'Pentatonic Maj';
 export const NEAPOLITAN_MAJOR = 'Neapolitan Maj';
-export const MINOR = 'Minor';
+export const MINOR = 'Min';
 export const HARMONIC_MINOR = 'Harmonic Min';
 export const MELODIC_MINOR = 'Melodic Min';
 export const PENTATONIC_MINOR = 'Pentatonic Min';
