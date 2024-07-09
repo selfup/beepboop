@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/beepboop/static/css/main.bcc08110.css",
+    "main.css": "/beepboop/static/css/main.6edf494e.css",
     "main.js": "/beepboop/static/js/main.bc3dc33a.js",
     "index.html": "/beepboop/index.html",
-    "main.bcc08110.css.map": "/beepboop/static/css/main.bcc08110.css.map",
+    "main.6edf494e.css.map": "/beepboop/static/css/main.6edf494e.css.map",
     "main.bc3dc33a.js.map": "/beepboop/static/js/main.bc3dc33a.js.map"
   },
   "entrypoints": [
-    "static/css/main.bcc08110.css",
+    "static/css/main.6edf494e.css",
     "static/js/main.bc3dc33a.js"
   ]
 }
