@@ -6,66 +6,15 @@ import {
   transposeForTenorSax,
 } from '../lib/scales';
 
+import { E_STANDARD, tunings, tuningNames } from '../lib/tunings';
+
 import { stringRow, mapTableNotes, tuningMod } from './Helpers';
-
-const eStandard = () => [
-  { position: 4 },
-  { position: 9 },
-  { position: 2 },
-  { position: 7 },
-  { position: 11 },
-  { position: 4 },
-];
-
-const dropD = () => [
-  { position: 2 },
-  { position: 7 },
-  { position: 2 },
-  { position: 7 },
-  { position: 11 },
-  { position: 2 },
-];
-
-const openG = () => [
-  { position: 2 },
-  { position: 7 },
-  { position: 2 },
-  { position: 7 },
-  { position: 11 },
-  { position: 2 },
-];
-
-const dStandard = () => [
-  { position: 2 },
-  { position: 7 },
-  { position: 0 },
-  { position: 5 },
-  { position: 9 },
-  { position: 2 },
-];
-
-const cStandard = () => [
-  { position: 0 },
-  { position: 5 },
-  { position: 10 },
-  { position: 3 },
-  { position: 7 },
-  { position: 0 },
-];
-
-const bStandard = () => [
-  { position: 11 },
-  { position: 4 },
-  { position: 9 },
-  { position: 2 },
-  { position: 6 },
-  { position: 11 },
-];
 
 export function NotesSection({ customScale }) {
   const [state, setState] = useState({
     moded: false,
-    strings: eStandard(),
+    tuning: E_STANDARD,
+    strings: tunings[E_STANDARD](),
   });
 
   const { moded, strings } = state;
@@ -126,38 +75,50 @@ export function NotesSection({ customScale }) {
       </div>
       <p className="inner-section-name">Alternate Tunings</p>
       <div>
-        <button onClick={() => setState({ strings: eStandard() })}>
-          E Standard
-        </button>
-        <button onClick={() => setState({ strings: dropD() })}>
-          Drop D
-        </button>
-        <button onClick={() => setState({ strings: openG() })}>
-          Open G
-        </button>
-      </div>
-      <div>
-        <button onClick={() => setState({ strings: dStandard() })}>
-          D Standard
-        </button>
-        <button onClick={() => setState({ strings: cStandard() })}>
-          C Standard
-        </button>
-        <button onClick={() => setState({ strings: bStandard() })}>
-          B Standard
-        </button>
+        {tuningNames().map((name, idx) => {
+          return (
+            <button
+              key={idx}
+              onClick={() =>
+                setState({ tuning: name, strings: tunings[name]() })
+              }
+            >
+              {name}
+            </button>
+          );
+        })}
       </div>
       <p className="inner-section-name">Common Regis Mods</p>
       <div>
+        {moded ? (
+          <button
+            onClick={() => {
+              const { tuning } = state;
+
+              const strings = tunings[tuning]();
+
+              setState({ tuning, strings });
+            }}
+          >
+            Undo
+          </button>
+        ) : (
+          ''
+        )}
         <button
           disabled={moded}
           style={{ backgroundColor: moded ? 'grey' : '' }}
           onClick={() => {
             const mod = 'Hypno';
+            const { tuning } = state;
             let currentStrings = [...strings];
 
             tuningMod({ mod, currentStrings });
-            setState({ strings: currentStrings, moded: true });
+            setState({
+              moded: true,
+              tuning,
+              strings: currentStrings,
+            });
           }}
         >
           Hypno
@@ -167,10 +128,15 @@ export function NotesSection({ customScale }) {
           style={{ backgroundColor: moded ? 'grey' : '' }}
           onClick={() => {
             const mod = '4th Up';
+            const { tuning } = state;
             let currentStrings = [...strings];
 
             tuningMod({ mod, currentStrings });
-            setState({ strings: currentStrings, moded: true });
+            setState({
+              moded: true,
+              tuning,
+              strings: currentStrings,
+            });
           }}
         >
           4th Up
@@ -180,10 +146,15 @@ export function NotesSection({ customScale }) {
           style={{ backgroundColor: moded ? 'grey' : '' }}
           onClick={() => {
             const mod = '4th Up Drop 5';
+            const { tuning } = state;
             let currentStrings = [...strings];
 
             tuningMod({ mod, currentStrings });
-            setState({ strings: currentStrings, moded: true });
+            setState({
+              moded: true,
+              tuning,
+              strings: currentStrings,
+            });
           }}
         >
           4th Up Down 5

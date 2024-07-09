@@ -44,7 +44,7 @@ button {
 .section {
   padding-top: 5px;
   padding-bottom: 5px;
-  max-width: 1300px;
+  max-width: 900px;
 }
 
 .notes {
@@ -52,15 +52,14 @@ button {
 }
 
 .notes-section {
-  margin: 10px;
-  margin-bottom: 0.5em;
+  margin: 0.5em;
   background-color: #282c34;
   padding: 0.5em;
 }
 
 .section-name {
-  margin-left: 0.2em;
-  margin-right: 0.2em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
   background-color:chocolate;
   padding: 0.3em;
 }

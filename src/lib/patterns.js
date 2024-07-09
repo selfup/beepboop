@@ -18,7 +18,6 @@ export const allPatterns = () => [
   { name: CONSTANTS.PENTATONIC_MAJOR, intervals: [2, 2, 3, 2, 3] },
   { name: CONSTANTS.PENTATONIC_MINOR, intervals: [3, 2, 2, 3, 2] },
   { name: CONSTANTS.BLUES, intervals: [3, 2, 1, 1, 3, 2] },
-  { name: CONSTANTS.CHROMATIC, intervals: Array(12).fill(1) },
   {
     name: CONSTANTS.HUNGARIAN_MINOR,
     intervals: [2, 1, 3, 1, 1, 3, 1],
