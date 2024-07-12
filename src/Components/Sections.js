@@ -7,6 +7,7 @@ import { Triads } from './Triads.js';
 import { Note } from '../lib/notes.js';
 import { Scale } from '../lib/scales.js';
 import { allPatterns } from '../lib/patterns.js';
+import { CircleOfFourths } from './CircleOfFourths.js';
 
 export function Sections({
   appSetState,
@@ -37,7 +38,6 @@ export function Sections({
         customScaleIntervals={customScaleIntervals}
       />
       <NotesSection customScale={customScale} />
-      {/* <CustomNoteSection customScale={customScale} /> */}
       <Modes
         scaleKey={scaleKey}
         scaleName={scaleName}
@@ -48,6 +48,7 @@ export function Sections({
         scaleName={scaleName}
         customScale={customScale}
       />
+      <CircleOfFourths />
     </div>
   );
 }
