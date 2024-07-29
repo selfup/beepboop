@@ -17,37 +17,37 @@ import {
 
 import { transpose } from '../lib/scales';
 
+const majorRoots = [
+  C,
+  F,
+  A_SHARP,
+  D_SHARP,
+  G_SHARP,
+  C_SHARP,
+  F_SHARP,
+  B,
+  E,
+  A,
+  D,
+  G,
+];
+
+const relativeMinors = [
+  A,
+  D,
+  G,
+  C,
+  F,
+  A_SHARP,
+  D_SHARP,
+  G_SHARP,
+  C_SHARP,
+  F_SHARP,
+  B,
+  C,
+];
+
 export function CircleOfFourths() {
-  const circleOfFourthsMajorRoots = [
-    C,
-    F,
-    A_SHARP,
-    D_SHARP,
-    G_SHARP,
-    C_SHARP,
-    F_SHARP,
-    B,
-    E,
-    A,
-    D,
-    G,
-  ];
-
-  const circleOfFourthsRelativeMinors = [
-    A,
-    D,
-    G,
-    C,
-    F,
-    A_SHARP,
-    D_SHARP,
-    G_SHARP,
-    C_SHARP,
-    F_SHARP,
-    B,
-    C,
-  ];
-
   return (
     <div>
       <p className="section-name">
@@ -56,11 +56,9 @@ export function CircleOfFourths() {
       <div className="notes-section">
         <table style={{ width: '100%', display: 'inline' }}>
           <tbody>
-            {circleOfFourthsMajorRoots.map((note, idx) => {
+            {majorRoots.map((note, idx) => {
               const minorNote =
-                circleOfFourthsRelativeMinors[
-                  idx
-                ].toLocaleLowerCase();
+                relativeMinors[idx].toLocaleLowerCase();
 
               const alto = transpose(note, 9).name;
               const altoMinor = transpose(

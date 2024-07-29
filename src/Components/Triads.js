@@ -26,16 +26,19 @@ export function Triads({ customScale, scaleKey, scaleName }) {
         <b> Triads</b>
       </p>
       <div className="notes-section">
+        <p>
+          <em>applies to 7 note scales</em>
+        </p>
         <p className="notes">
-          Root Triad: {mapTriads(rootTriadNotes)}
+          Root Triad (1-3-5): {mapTriads(rootTriadNotes)}
           Alto: {mapTriads(altoRootTriadNotes)}
         </p>
         <p className="notes">
-          1st Inversion: {mapTriads(firstInversionNotes)}
+          1st Inversion (3-5-8): {mapTriads(firstInversionNotes)}
           Alto: {mapTriads(altoFirstInversionNotes)}
         </p>
         <p className="notes">
-          2nd Inversion: {mapTriads(secondInversionNotes)}
+          2nd Inversion (5-8-10): {mapTriads(secondInversionNotes)}
           Alto: {mapTriads(altoSecondInversionNotes)}
         </p>
       </div>
