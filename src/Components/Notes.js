@@ -57,6 +57,9 @@ export function NotesSection({ customScale }) {
         <p></p>
       </div>
       <p className="inner-section-name">Guitar</p>
+      <p>
+        <em>starting on the first note of the scale per string</em>
+      </p>
       <table style={{ width: '100%', display: 'inline' }}>
         <tbody>
           {strings.map((string, stringIndex) =>
