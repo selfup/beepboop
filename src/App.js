@@ -9,6 +9,8 @@ function App() {
   const [state, setState] = useState({
     scaleKeyIndex: 0,
     scaleNameIndex: 0,
+    notesToTranspose: [],
+    transposedNotes: [],
   });
 
   const { scaleKeyIndex, scaleNameIndex } = state;
