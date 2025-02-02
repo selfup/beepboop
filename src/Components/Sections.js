@@ -3,6 +3,7 @@ import { KeySection } from './Key.js';
 import { NotesSection } from './Notes.js';
 import { Modes } from './Modes.js';
 import { Triads } from './Triads.js';
+import { TransposeSection } from './Transpose';
 
 import { Note } from '../lib/notes.js';
 import { Scale } from '../lib/scales.js';
@@ -26,6 +27,7 @@ export function Sections({
 
   return (
     <div className="sections">
+      <TransposeSection />
       <KeySection
         appSetState={appSetState}
         scaleKey={scaleKey}
