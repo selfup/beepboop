@@ -1,6 +1,15 @@
+import { useState } from 'react';
 import { keyNames } from '../lib/keys';
+import { collectNotes } from '../lib/scales';
+import { allNotes } from '../lib/notes';
 
 export function TransposeSection({ appSetState, scaleNameIndex }) {
+  const initialState = {
+    notes: [],
+  };
+
+  const [state, setState] = useState(initialState);
+
   return (
     <>
       <p className="section-name">
@@ -17,9 +26,15 @@ export function TransposeSection({ appSetState, scaleNameIndex }) {
           <button
             className="key-button"
             key={idx}
-            onClick={() =>
-              appSetState({ scaleKeyIndex: idx, scaleNameIndex })
-            }
+            onClick={() => {
+              const note = keyNames[idx];
+
+              const notes = state.notes;
+
+              notes.push({ name: note, idx });
+
+              setState({ notes: notes });
+            }}
           >
             {name}
           </button>
@@ -31,6 +46,32 @@ export function TransposeSection({ appSetState, scaleNameIndex }) {
         <button onClick={() => {}}>Alto to Concert</button>
         <button onClick={() => {}}>Concert to Tenor</button>
         <button onClick={() => {}}>Concert to Alto</button>
+        <button
+          onClick={() => {
+            setState({ notes: [] });
+          }}
+        >
+          CLEAR NOTES
+        </button>
+      </div>
+      <div className="section">
+        <div>
+          Given Notes:{' '}
+          {state.notes.map((note, i) => note.name).toString()}
+        </div>
+        <p>
+          Transposed Notes:{' '}
+          {state.notes
+            .map((note, i) => {
+              const notes = allNotes();
+
+              const newIndex =
+                (note.idx + 2 + notes.length) % notes.length;
+
+              return keyNames[newIndex];
+            })
+            .toString()}
+        </p>
       </div>
     </>
   );
