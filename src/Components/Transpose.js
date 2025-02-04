@@ -13,13 +13,11 @@ export function TransposeSection({ appSetState, scaleNameIndex }) {
   return (
     <>
       <p className="section-name">
-        <b>Transpose Notes</b>
+        <b>Transpose Tenor Notes</b>
       </p>
       <p className="inner-section-name">Select Notes</p>
       <p>
-        <em>
-          Each note clicked will add to a list of notes to transpose
-        </em>
+        <em>Each note clicked will add to a list of notes</em>
       </p>
       <div className="section">
         {keyNames.map((name, idx) => (
@@ -40,12 +38,19 @@ export function TransposeSection({ appSetState, scaleNameIndex }) {
           </button>
         ))}
       </div>
-      <p className="inner-section-name">Select how to transpose</p>
+      <p className="inner-section-name">Transpose Tenor to Concert</p>
       <div className="section">
-        <button onClick={() => {}}>Tenor to Concert</button>
-        <button onClick={() => {}}>Alto to Concert</button>
-        <button onClick={() => {}}>Concert to Tenor</button>
-        <button onClick={() => {}}>Concert to Alto</button>
+        <button
+          onClick={() => {
+            const newNotes = state.notes;
+
+            newNotes.pop();
+
+            setState({ notes: newNotes });
+          }}
+        >
+          UNDO
+        </button>
         <button
           onClick={() => {
             setState({ notes: [] });
@@ -56,17 +61,17 @@ export function TransposeSection({ appSetState, scaleNameIndex }) {
       </div>
       <div className="section">
         <div>
-          Given Notes:{' '}
+          Tenor Notes:{' '}
           {state.notes.map((note, i) => note.name).toString()}
         </div>
         <p>
-          Transposed Notes:{' '}
+          Concert Notes:{' '}
           {state.notes
             .map((note, i) => {
               const notes = allNotes();
 
               const newIndex =
-                (note.idx + 2 + notes.length) % notes.length;
+                (note.idx - 2 + notes.length) % notes.length;
 
               return keyNames[newIndex];
             })
