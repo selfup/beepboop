@@ -4,5 +4,5 @@ set -eou pipefail
 
 git add .
 git commit -m "compile docs"
-git push origin HEAD
+git push origin HEAD --force
 git checkout main
