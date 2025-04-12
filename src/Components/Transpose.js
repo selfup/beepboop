@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { keyNames } from '../lib/keys';
-import { collectNotes } from '../lib/scales';
 import { allNotes } from '../lib/notes';
 
 export function TransposeSection({ appSetState, scaleNameIndex }) {

@@ -1,5 +1,7 @@
 # Beep Boop
 
+_Copyright © 2024 Regis Jean-Pierre Boudinot. All Rights Reserved_
+
 PolyInstrumentalist Helper Tool
 
 https://selfup.github.io/beepboop/

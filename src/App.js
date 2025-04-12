@@ -1,3 +1,5 @@
+/* Copyright © 2025 Regis Jean-Pierre Boudinot. All Rights Reserved */
+
 import { useState } from 'react';
 import { keyNames } from './lib/keys.js';
 import { scaleNames } from './lib/scales.js';
@@ -28,6 +30,7 @@ function App() {
           scaleNameIndex={scaleNameIndex}
           scaleKeyIndex={scaleKeyIndex}
         />
+        <p>Copyright © 2024 Regis Jean-Pierre Boudinot. All Rights Reserved</p>
       </header>
     </div>
   );
